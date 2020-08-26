@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 4 Python data manipulation | Merely Useful: Novice Python</title>
+  <meta name="description" content="Chapter 4 Python data manipulation | Merely Useful: Novice Python" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 4 Python data manipulation | Merely Useful: Novice Python" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  <meta name="github-repo" content="merely-useful/merely-useful.github.io" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 4 Python data manipulation | Merely Useful: Novice Python" />
+  
+  
+  
+
+<meta name="author" content="Madeleine Bonsma-Fisher, Kate Hertweck, Damien Irving, Luke Johnston, Christina Koch, Sara Mahallati, Joel Ostblom, Elizabeth Wickes, Charlotte Wickham, and Greg Wilson" />
+
+
+<meta name="date" content="2020-08-26" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="getting-started.html"/>
+<link rel="next" href="dev-development.html"/>
+<script src="libs/header-attrs-2.3/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; } /* Alert */
+code span.an { color: #008000; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #0000ff; } /* ControlFlow */
+code span.ch { color: #008080; } /* Char */
+code span.cn { } /* Constant */
+code span.co { color: #008000; } /* Comment */
+code span.cv { color: #008000; } /* CommentVar */
+code span.do { color: #008000; } /* Documentation */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.im { } /* Import */
+code span.in { color: #008000; } /* Information */
+code span.kw { color: #0000ff; } /* Keyword */
+code span.op { } /* Operator */
+code span.ot { color: #ff4000; } /* Other */
+code span.pp { color: #ff4000; } /* Preprocessor */
+code span.sc { color: #008080; } /* SpecialChar */
+code span.ss { color: #008080; } /* SpecialString */
+code span.st { color: #008080; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #008080; } /* VerbatimString */
+code span.wa { color: #008000; font-weight: bold; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><strong><a href="./">Merely Useful</a></strong></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Overview</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#overview-against"><i class="fa fa-check"></i><b>1.1</b> Why isn’t all of this normal already?</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#contributing"><i class="fa fa-check"></i><b>1.2</b> Contributing</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#overview-ack"><i class="fa fa-check"></i><b>1.3</b> Acknowledgments</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#goals"><i class="fa fa-check"></i><b>1.4</b> Goals for this course</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="index.html"><a href="index.html#personas"><i class="fa fa-check"></i><b>1.4.1</b> Personas</a></li>
+<li class="chapter" data-level="1.4.2" data-path="index.html"><a href="index.html#general-outline"><i class="fa fa-check"></i><b>1.4.2</b> General Outline</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#intro-personas"><i class="fa fa-check"></i><b>2.1</b> Who are these lessons for?</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="intro.html"><a href="intro.html#summary"><i class="fa fa-check"></i><b>2.1.1</b> Summary</a></li>
+<li class="chapter" data-level="2.1.2" data-path="intro.html"><a href="intro.html#prerequisites"><i class="fa fa-check"></i><b>2.1.2</b> Prerequisites</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#intro-goals"><i class="fa fa-check"></i><b>2.2</b> What does “done” look like?</a></li>
+<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#intro-example"><i class="fa fa-check"></i><b>2.3</b> What will we use as running examples?</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="index.html"><a href="index.html#getting-started"><i class="fa fa-check"></i><b>3</b> Getting Started with Python</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="index.html"><a href="index.html#getting-started"><i class="fa fa-check"></i><b>3.1</b> Objectives</a></li>
+<li class="chapter" data-level="3.2" data-path="getting-started.html"><a href="getting-started.html"><i class="fa fa-check"></i><b>3.2</b> Introduction to Spyder</a></li>
+<li class="chapter" data-level="3.3" data-path="getting-started.html"><a href="getting-started.html#getting-started-console"><i class="fa fa-check"></i><b>3.3</b> Running Code in the Console</a></li>
+<li class="chapter" data-level="3.4" data-path="getting-started.html"><a href="getting-started.html#getting-started-script"><i class="fa fa-check"></i><b>3.4</b> Running Code via Scripts</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="getting-started.html"><a href="getting-started.html#organizing-sections-with-code-cells"><i class="fa fa-check"></i><b>3.4.1</b> Organizing Sections with Code Cells</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="getting-started.html"><a href="getting-started.html#getting-started-objects"><i class="fa fa-check"></i><b>3.5</b> Variables, Objects, Methods</a></li>
+<li class="chapter" data-level="3.6" data-path="getting-started.html"><a href="getting-started.html#getting-started-spyder-help"><i class="fa fa-check"></i><b>3.6</b> Getting Help in Spyder</a></li>
+<li class="chapter" data-level="3.7" data-path="getting-started.html"><a href="getting-started.html#getting-started-web-help"><i class="fa fa-check"></i><b>3.7</b> Getting Help Online</a></li>
+<li class="chapter" data-level="3.8" data-path="getting-started.html"><a href="getting-started.html#exercises"><i class="fa fa-check"></i><b>3.8</b> Exercises</a></li>
+<li class="chapter" data-level="3.9" data-path="getting-started.html"><a href="getting-started.html#getting-started-keypoints"><i class="fa fa-check"></i><b>3.9</b> Key Points</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="index.html"><a href="index.html#data-manipulation"><i class="fa fa-check"></i><b>4</b> Python data manipulation</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="data-manipulation.html"><a href="data-manipulation.html"><i class="fa fa-check"></i><b>4.1</b> How can I read tabular data into a program?</a></li>
+<li class="chapter" data-level="4.2" data-path="data-manipulation.html"><a href="data-manipulation.html#how-can-i-select-subsets-of-my-data"><i class="fa fa-check"></i><b>4.2</b> How can I select subsets of my data?</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="data-manipulation.html"><a href="data-manipulation.html#selecting-columns"><i class="fa fa-check"></i><b>4.2.1</b> Selecting columns</a></li>
+<li class="chapter" data-level="4.2.2" data-path="data-manipulation.html"><a href="data-manipulation.html#selecting-rows"><i class="fa fa-check"></i><b>4.2.2</b> Selecting rows</a></li>
+<li class="chapter" data-level="4.2.3" data-path="data-manipulation.html"><a href="data-manipulation.html#selecting-rows-and-columns"><i class="fa fa-check"></i><b>4.2.3</b> Selecting rows and columns</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="data-manipulation.html"><a href="data-manipulation.html#how-can-i-calculate-new-values"><i class="fa fa-check"></i><b>4.3</b> How can I calculate new values?</a></li>
+<li class="chapter" data-level="4.4" data-path="data-manipulation.html"><a href="data-manipulation.html#how-can-i-tell-whats-gone-wrong-in-my-programs"><i class="fa fa-check"></i><b>4.4</b> How can I tell what’s gone wrong in my programs?</a></li>
+<li class="chapter" data-level="4.5" data-path="data-manipulation.html"><a href="data-manipulation.html#how-can-i-summarize-and-group-my-data"><i class="fa fa-check"></i><b>4.5</b> How can I summarize and group my data?</a></li>
+<li class="chapter" data-level="4.6" data-path="data-manipulation.html"><a href="data-manipulation.html#how-can-i-save-my-results"><i class="fa fa-check"></i><b>4.6</b> How can I save my results?</a></li>
+<li class="chapter" data-level="4.7" data-path="data-manipulation.html"><a href="data-manipulation.html#how-can-i-tidy-up-my-data"><i class="fa fa-check"></i><b>4.7</b> How can I tidy up my data?</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="data-manipulation.html"><a href="data-manipulation.html#modifying-column-names"><i class="fa fa-check"></i><b>4.7.1</b> Modifying column names</a></li>
+<li class="chapter" data-level="4.7.2" data-path="data-manipulation.html"><a href="data-manipulation.html#cleaning-values"><i class="fa fa-check"></i><b>4.7.2</b> Cleaning values</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="data-manipulation.html"><a href="data-manipulation.html#data-manipulation-summary"><i class="fa fa-check"></i><b>4.8</b> Summary</a></li>
+<li class="chapter" data-level="4.9" data-path="data-manipulation.html"><a href="data-manipulation.html#data-manipulation-exercises"><i class="fa fa-check"></i><b>4.9</b> Exercises</a></li>
+<li class="chapter" data-level="4.10" data-path="data-manipulation.html"><a href="data-manipulation.html#data-manipulation-keypoints"><i class="fa fa-check"></i><b>4.10</b> Key Points</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="dev-development.html"><a href="dev-development.html"><i class="fa fa-check"></i><b>5</b> Development</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="dev-development.html"><a href="dev-development.html#dev"><i class="fa fa-check"></i><b>5.1</b> Objectives</a></li>
+<li class="chapter" data-level="5.2" data-path="dev-development.html"><a href="dev-development.html#dev-functions"><i class="fa fa-check"></i><b>5.2</b> Functions</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="dev-development.html"><a href="dev-development.html#dev-creating-functions"><i class="fa fa-check"></i><b>5.2.1</b> Creating functions</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="dev-development.html"><a href="dev-development.html#dev-how-to-make-programs-indicate-that-something-has-gone-wrong"><i class="fa fa-check"></i><b>5.3</b> How to make programs indicate that something has gone wrong?</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="dev-development.html"><a href="dev-development.html#dev-ducktyping-relying-on-Python-to-detect-unexpected-behavior"><i class="fa fa-check"></i><b>5.3.1</b> Ducktyping - relying on Python to detect unexpected behavior</a></li>
+<li class="chapter" data-level="5.3.2" data-path="dev-development.html"><a href="dev-development.html#dev-assertions-explicitly-checking-for-unexpected-behavior"><i class="fa fa-check"></i><b>5.3.2</b> Assertions - explicitly checking for unexpected behavior</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="dev-development.html"><a href="dev-development.html#dev-packages"><i class="fa fa-check"></i><b>5.4</b> Packages</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="dev-development.html"><a href="dev-development.html#dev-installing-Python"><i class="fa fa-check"></i><b>5.4.1</b> Installing Python</a></li>
+<li class="chapter" data-level="5.4.2" data-path="dev-development.html"><a href="dev-development.html#dev-using-Python"><i class="fa fa-check"></i><b>5.4.2</b> Using Python</a></li>
+<li class="chapter" data-level="5.4.3" data-path="dev-development.html"><a href="dev-development.html#dev-what-is-a-package"><i class="fa fa-check"></i><b>5.4.3</b> What is a package?</a></li>
+<li class="chapter" data-level="5.4.4" data-path="dev-development.html"><a href="dev-development.html#dev-importing-packages"><i class="fa fa-check"></i><b>5.4.4</b> Importing packages</a></li>
+<li class="chapter" data-level="5.4.5" data-path="dev-development.html"><a href="dev-development.html#dev-installing-packages"><i class="fa fa-check"></i><b>5.4.5</b> Installing packages</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="dev-development.html"><a href="dev-development.html#dev-how-to-get-help-online"><i class="fa fa-check"></i><b>5.5</b> How to get help online</a></li>
+<li class="chapter" data-level="5.6" data-path="dev-development.html"><a href="dev-development.html#dev-keypoints"><i class="fa fa-check"></i><b>5.6</b> Key Points</a></li>
+<li class="chapter" data-level="5.7" data-path="dev-development.html"><a href="dev-development.html#dev-exercises"><i class="fa fa-check"></i><b>5.7</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="index.html"><a href="index.html#publishing"><i class="fa fa-check"></i><b>6</b> Publishing</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="index.html"><a href="index.html#publishing"><i class="fa fa-check"></i><b>6.1</b> Objectives</a></li>
+<li class="chapter" data-level="6.2" data-path="publishing.html"><a href="publishing.html"><i class="fa fa-check"></i><b>6.2</b> Why should I share my work on the internet?</a></li>
+<li class="chapter" data-level="6.3" data-path="publishing.html"><a href="publishing.html#what-does-it-take-to-get-a-webpage-online"><i class="fa fa-check"></i><b>6.3</b> What does it take to get a webpage online?</a></li>
+<li class="chapter" data-level="6.4" data-path="publishing.html"><a href="publishing.html#how-do-i-get-my-work-on-the-web"><i class="fa fa-check"></i><b>6.4</b> How do I get my work on the web?</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="publishing.html"><a href="publishing.html#a-starting-point"><i class="fa fa-check"></i><b>6.4.1</b> A starting point</a></li>
+<li class="chapter" data-level="6.4.2" data-path="publishing.html"><a href="publishing.html#html-files"><i class="fa fa-check"></i><b>6.4.2</b> HTML files</a></li>
+<li class="chapter" data-level="6.4.3" data-path="publishing.html"><a href="publishing.html#setting-up-your-repo-to-have-a-web-page"><i class="fa fa-check"></i><b>6.4.3</b> Setting up your repo to have a web page</a></li>
+<li class="chapter" data-level="6.4.4" data-path="publishing.html"><a href="publishing.html#getting-a-default-page-to-display-when-people-visit-the-project-site"><i class="fa fa-check"></i><b>6.4.4</b> Getting a default page to display when people visit the project site</a></li>
+<li class="chapter" data-level="6.4.5" data-path="publishing.html"><a href="publishing.html#what-does-it-take-to-get-your-work-on-a-webpage"><i class="fa fa-check"></i><b>6.4.5</b> What does it take to get your work on a webpage?</a></li>
+<li class="chapter" data-level="6.4.6" data-path="publishing.html"><a href="publishing.html#exercise-customize-index.rmd"><i class="fa fa-check"></i><b>6.4.6</b> Exercise: Customize <code>index.Rmd</code></a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="publishing.html"><a href="publishing.html#how-do-i-link-to-other-pages-files-or-images"><i class="fa fa-check"></i><b>6.5</b> How do I link to other pages, files or images?</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="publishing.html"><a href="publishing.html#linking-to-other-pages"><i class="fa fa-check"></i><b>6.5.1</b> Linking to other pages</a></li>
+<li class="chapter" data-level="6.5.2" data-path="publishing.html"><a href="publishing.html#exercise-relative-links"><i class="fa fa-check"></i><b>6.5.2</b> Exercise: Relative links</a></li>
+<li class="chapter" data-level="6.5.3" data-path="publishing.html"><a href="publishing.html#exercise-add-links-to-index.html"><i class="fa fa-check"></i><b>6.5.3</b> Exercise: Add links to <code>index.html</code></a></li>
+<li class="chapter" data-level="6.5.4" data-path="publishing.html"><a href="publishing.html#linking-to-sections-within-a-page"><i class="fa fa-check"></i><b>6.5.4</b> Linking to sections within a page</a></li>
+<li class="chapter" data-level="6.5.5" data-path="publishing.html"><a href="publishing.html#exercise-add-and-link-to-a-section-in-report.rmd"><i class="fa fa-check"></i><b>6.5.5</b> Exercise: Add and link to a section in <code>report.Rmd</code></a></li>
+<li class="chapter" data-level="6.5.6" data-path="publishing.html"><a href="publishing.html#including-images"><i class="fa fa-check"></i><b>6.5.6</b> Including images</a></li>
+<li class="chapter" data-level="6.5.7" data-path="publishing.html"><a href="publishing.html#exercise-add-an-image-to-index.html"><i class="fa fa-check"></i><b>6.5.7</b> Exercise: Add an image to <code>index.html</code></a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="publishing.html"><a href="publishing.html#exercise-add-a-website-to-an-existing-project"><i class="fa fa-check"></i><b>6.6</b> Exercise: Add a website to an existing project</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="index.html"><a href="index.html#version-control"><i class="fa fa-check"></i><b>7</b> Version Control</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="index.html"><a href="index.html#version-control"><i class="fa fa-check"></i><b>7.1</b> Objectives</a></li>
+<li class="chapter" data-level="7.2" data-path="version-control.html"><a href="version-control.html"><i class="fa fa-check"></i><b>7.2</b> What is Version Control?</a></li>
+<li class="chapter" data-level="7.3" data-path="version-control.html"><a href="version-control.html#version-control-repo"><i class="fa fa-check"></i><b>7.3</b> Creating a Repository</a></li>
+<li class="chapter" data-level="7.4" data-path="version-control.html"><a href="version-control.html#version-control-tracking-changes"><i class="fa fa-check"></i><b>7.4</b> Tracking Changes</a></li>
+<li class="chapter" data-level="7.5" data-path="version-control.html"><a href="version-control.html#version-control-examining-versions"><i class="fa fa-check"></i><b>7.5</b> Examining Previous Versions</a></li>
+<li class="chapter" data-level="7.6" data-path="version-control.html"><a href="version-control.html#version-control-remote"><i class="fa fa-check"></i><b>7.6</b> Online Repositories</a></li>
+<li class="chapter" data-level="7.7" data-path="version-control.html"><a href="version-control.html#version-control-conflicts"><i class="fa fa-check"></i><b>7.7</b> Conflicts</a></li>
+<li class="chapter" data-level="7.8" data-path="version-control.html"><a href="version-control.html#version-control-local-vs-remote"><i class="fa fa-check"></i><b>7.8</b> Using Local vs Remote Repositories</a></li>
+<li class="chapter" data-level="7.9" data-path="version-control.html"><a href="version-control.html#version-control-beyond"><i class="fa fa-check"></i><b>7.9</b> To Git-finity, and Beyond</a></li>
+<li class="chapter" data-level="7.10" data-path="version-control.html"><a href="version-control.html#exercises-1"><i class="fa fa-check"></i><b>7.10</b> Exercises</a></li>
+<li class="chapter" data-level="7.11" data-path="version-control.html"><a href="version-control.html#version-control-keypoints"><i class="fa fa-check"></i><b>7.11</b> Key Points</a></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="license.html"><a href="license.html"><i class="fa fa-check"></i><b>A</b> License</a></li>
+<li class="chapter" data-level="B" data-path="conduct.html"><a href="conduct.html"><i class="fa fa-check"></i><b>B</b> Code of Conduct</a>
+<ul>
+<li class="chapter" data-level="B.1" data-path="conduct.html"><a href="conduct.html#conduct-standards"><i class="fa fa-check"></i><b>B.1</b> Our Standards</a></li>
+<li class="chapter" data-level="B.2" data-path="conduct.html"><a href="conduct.html#conduct-responsibilities"><i class="fa fa-check"></i><b>B.2</b> Our Responsibilities</a></li>
+<li class="chapter" data-level="B.3" data-path="conduct.html"><a href="conduct.html#conduct-scope"><i class="fa fa-check"></i><b>B.3</b> Scope</a></li>
+<li class="chapter" data-level="B.4" data-path="conduct.html"><a href="conduct.html#conduct-enforcement"><i class="fa fa-check"></i><b>B.4</b> Enforcement</a></li>
+<li class="chapter" data-level="B.5" data-path="conduct.html"><a href="conduct.html#conduct-attribution"><i class="fa fa-check"></i><b>B.5</b> Attribution</a></li>
+</ul></li>
+<li class="chapter" data-level="C" data-path="glossary.html"><a href="glossary.html"><i class="fa fa-check"></i><b>C</b> Glossary</a></li>
+<li class="chapter" data-level="D" data-path="objectives.html"><a href="objectives.html"><i class="fa fa-check"></i><b>D</b> Novice Python Learning Objectives</a></li>
+<li class="chapter" data-level="E" data-path="keypoints.html"><a href="keypoints.html"><i class="fa fa-check"></i><b>E</b> Novice Python Key Points</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Merely Useful: Novice Python</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="data-manipulation" class="section level1" number="4">
+<h1><span class="header-section-number">Chapter 4</span> Python data manipulation</h1>
+<p>With just a few Python libraries and commands, you can rearrange, process, manipulate, and
+analyze tabular data easily and reproducibly.</p>
+<p>This material is based on a <a href="https://github.com/UofTCoders/workshops-dc-python">workshop run by UofT Coders</a>
+and a <a href="https://datacarpentry.org/python-ecology-lesson/">Data Carpentry Python workshop</a>.</p>
+<div id="data-manipulation-reading" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> How can I read tabular data into a program?</h2>
+<p>The package <code>pandas</code> is built for working with tabular data, and the <code>pandas</code>
+function <code>read_csv()</code> takes a tabular text file as input and returns a <code>pandas</code>
+data frame.</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb32-1"><a href="data-manipulation.html#cb32-1" aria-hidden="true"></a><span class="co"># reading in tabular data - example</span></span>
+<span id="cb32-2"><a href="data-manipulation.html#cb32-2" aria-hidden="true"></a><span class="im">import</span> pandas <span class="im">as</span> pd <span class="co"># import the pandas package</span></span>
+<span id="cb32-3"><a href="data-manipulation.html#cb32-3" aria-hidden="true"></a></span>
+<span id="cb32-4"><a href="data-manipulation.html#cb32-4" aria-hidden="true"></a><span class="co"># where is the file located on your computer?</span></span>
+<span id="cb32-5"><a href="data-manipulation.html#cb32-5" aria-hidden="true"></a><span class="co"># you can use a path relative to the current directory (shown in the example),</span></span>
+<span id="cb32-6"><a href="data-manipulation.html#cb32-6" aria-hidden="true"></a><span class="co"># or the full path (i.e. /home/madeleine/data/file.csv)</span></span>
+<span id="cb32-7"><a href="data-manipulation.html#cb32-7" aria-hidden="true"></a>filename <span class="op">=</span> <span class="st">&quot;data/nyc-dog-licenses.csv&quot;</span></span>
+<span id="cb32-8"><a href="data-manipulation.html#cb32-8" aria-hidden="true"></a></span>
+<span id="cb32-9"><a href="data-manipulation.html#cb32-9" aria-hidden="true"></a><span class="co"># the function pd.read_csv() takes a file path as its default input and tries to</span></span>
+<span id="cb32-10"><a href="data-manipulation.html#cb32-10" aria-hidden="true"></a><span class="co"># read in a table of data.</span></span>
+<span id="cb32-11"><a href="data-manipulation.html#cb32-11" aria-hidden="true"></a><span class="co"># here we assign the function&#39;s output to a variable called &quot;dog_licenses&quot;</span></span>
+<span id="cb32-12"><a href="data-manipulation.html#cb32-12" aria-hidden="true"></a>dog_licenses <span class="op">=</span> pd.read_csv(filename)</span></code></pre></div>
+<p>You can also pass a url as the <code>filename</code> argument in <code>read_csv()</code>:</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb33-1"><a href="data-manipulation.html#cb33-1" aria-hidden="true"></a>data_link <span class="op">=</span> <span class="st">&#39;https://github.com/merely-useful/merely-useful.github.io/raw/book/data/nyc-dog-licenses.csv.gz&#39;</span></span>
+<span id="cb33-2"><a href="data-manipulation.html#cb33-2" aria-hidden="true"></a>dog_licenses <span class="op">=</span> pd.read_csv(data_link)</span></code></pre></div>
+<p>The <code>read_csv()</code> function assumes by default that the column delimiter
+in the file is a comma and that the first line of the file contains column names.
+To specify a different delimiter (for example tab), pass the argument <code>sep=\t</code>.
+If the data has no column names, pass the argument <code>header=None</code>, or give a list
+of column names using the argument <code>names=['column1', 'column2']</code>.</p>
+<p>Data can come in many formats, and <code>read_csv()</code> has many options to reflect this.
+The <code>read_csv()</code> <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html">help page</a>
+describes all the possible arguments that can be used to tell <code>read_csv()</code> about
+how your data is organized.</p>
+<p>Here’s what the first few rows and columns of the dog license data look like if
+you open the file in a spreadsheet program:</p>
+<p>FIXME: This image needs to be added. It doesn’t exist.
+<!-- ![dog license data in a spreadsheet program](./figures/data-manipulation/NYC-dog-licenses-snapshot.png) --></p>
+<p>The structure of the data is exactly the same after reading it with <code>read_csv()</code>.
+You can get a quick view of the data using the method <code>.head()</code>:</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb34-1"><a href="data-manipulation.html#cb34-1" aria-hidden="true"></a>dog_licenses.head()</span></code></pre></div>
+</div>
+<div id="how-can-i-select-subsets-of-my-data" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> How can I select subsets of my data?</h2>
+<p>This data frame has rows and columns (it has 2 dimensions). To extract specific
+data from it (also referred to as “subsetting”), columns and/or rows can be selected either by their name or location.</p>
+<div id="selecting-columns" class="section level3" number="4.2.1">
+<h3><span class="header-section-number">4.2.1</span> Selecting columns</h3>
+<p>To select a column, pass the column name as a string to the data frame, using square brackets to indicate that we want to select from the data frame (similar to subsetting lists).</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb35-1"><a href="data-manipulation.html#cb35-1" aria-hidden="true"></a><span class="co"># to see what column names there are, we can use the method .columns</span></span>
+<span id="cb35-2"><a href="data-manipulation.html#cb35-2" aria-hidden="true"></a>dog_licenses.columns</span>
+<span id="cb35-3"><a href="data-manipulation.html#cb35-3" aria-hidden="true"></a></span>
+<span id="cb35-4"><a href="data-manipulation.html#cb35-4" aria-hidden="true"></a><span class="co"># to get a single column, use square brackets and the column name in quotation marks. This is case sensitive!</span></span>
+<span id="cb35-5"><a href="data-manipulation.html#cb35-5" aria-hidden="true"></a>dog_licenses[<span class="st">&quot;animal_name&quot;</span>].head()</span>
+<span id="cb35-6"><a href="data-manipulation.html#cb35-6" aria-hidden="true"></a></span>
+<span id="cb35-7"><a href="data-manipulation.html#cb35-7" aria-hidden="true"></a><span class="co"># to get multiple columns, provide a list of column names inside the square brackets.</span></span>
+<span id="cb35-8"><a href="data-manipulation.html#cb35-8" aria-hidden="true"></a>dog_licenses[[<span class="st">&quot;animal_name&quot;</span>, <span class="st">&quot;animal_gender&quot;</span>]].head()</span></code></pre></div>
+<p>Notice that if you provide a list, the returned object is a data frame of one or more columns, but if
+you provide a single item not in a list, it’s a <code>Series</code> object with a one column. There are situations where it is beneficial to work with one over the other, but for now it is enough to know the differences when selecting columns.</p>
+</div>
+<div id="selecting-rows" class="section level3" number="4.2.2">
+<h3><span class="header-section-number">4.2.2</span> Selecting rows</h3>
+<p>Selecting with single brackets (<code>[]</code>) is a shortcut to common operations such
+as selecting columns by labels as above. If you instead pass a range of numbers (e.g. <code>[0:10]</code>), the corresponding <em>row numbers</em> will be selected.</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb36-1"><a href="data-manipulation.html#cb36-1" aria-hidden="true"></a>dog_licenses[<span class="dv">0</span>:<span class="dv">10</span>]</span></code></pre></div>
+</div>
+<div id="selecting-rows-and-columns" class="section level3" number="4.2.3">
+<h3><span class="header-section-number">4.2.3</span> Selecting rows and columns</h3>
+<p>The function <code>.loc[]</code> gives more flexible control over both rows and columns by label. The syntax is <code>loc[&lt;rows&gt;, &lt;columns&gt;]</code>.</p>
+<p>For example, you can select the first 10 rows and a slice of columns:</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb37-1"><a href="data-manipulation.html#cb37-1" aria-hidden="true"></a>dog_licenses.loc[<span class="dv">0</span>:<span class="dv">10</span>, <span class="st">&quot;animal_name&quot;</span>:<span class="st">&quot;breed_name&quot;</span>]</span></code></pre></div>
+<p>You can use logical operations to filter your data based on some criteria.</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb38-1"><a href="data-manipulation.html#cb38-1" aria-hidden="true"></a><span class="co"># get rows where &#39;animal_gender&#39; is female</span></span>
+<span id="cb38-2"><a href="data-manipulation.html#cb38-2" aria-hidden="true"></a>dog_licenses[dog_licenses[<span class="st">&#39;animal_gender&#39;</span>] <span class="op">==</span> <span class="st">&#39;F&#39;</span>].head()</span>
+<span id="cb38-3"><a href="data-manipulation.html#cb38-3" aria-hidden="true"></a></span>
+<span id="cb38-4"><a href="data-manipulation.html#cb38-4" aria-hidden="true"></a><span class="co"># you can also get specific columns with .loc:</span></span>
+<span id="cb38-5"><a href="data-manipulation.html#cb38-5" aria-hidden="true"></a>dog_licenses.loc[dog_licenses[<span class="st">&#39;animal_gender&#39;</span>] <span class="op">==</span> <span class="st">&#39;F&#39;</span>, [<span class="st">&#39;animal_name&#39;</span>, <span class="st">&#39;animal_gender&#39;</span>]].head()</span></code></pre></div>
+<p>A single expression can also be used to filter for several criteria, either
+matching all criteria (<code>&amp;</code>) or any criteria (<code>|</code>). These special operators are
+used instead of <code>and</code> and <code>or</code> to make sure that the comparison occurs for each
+row in the data frame. Parentheses are added to indicate the priority of the
+comparisons.</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb39-1"><a href="data-manipulation.html#cb39-1" aria-hidden="true"></a><span class="co"># the symbol &#39;&amp;&#39; can be used to combine multiple logical comparisons</span></span>
+<span id="cb39-2"><a href="data-manipulation.html#cb39-2" aria-hidden="true"></a><span class="co"># &#39;==&#39; means &#39;is equal to&#39;</span></span>
+<span id="cb39-3"><a href="data-manipulation.html#cb39-3" aria-hidden="true"></a>dog_licenses.loc[(dog_licenses[<span class="st">&#39;animal_gender&#39;</span>] <span class="op">==</span> <span class="st">&#39;F&#39;</span>)</span>
+<span id="cb39-4"><a href="data-manipulation.html#cb39-4" aria-hidden="true"></a>           <span class="op">&amp;</span> (dog_licenses[<span class="st">&#39;breed_name&#39;</span>] <span class="op">==</span> <span class="st">&#39;Boxer&#39;</span>)</span>
+<span id="cb39-5"><a href="data-manipulation.html#cb39-5" aria-hidden="true"></a>           <span class="op">&amp;</span> (dog_licenses[<span class="st">&#39;animal_name&#39;</span>] <span class="op">==</span> <span class="st">&#39;MILEY&#39;</span>), <span class="st">&#39;animal_name&#39;</span> : <span class="st">&#39;breed_name&#39;</span>]</span>
+<span id="cb39-6"><a href="data-manipulation.html#cb39-6" aria-hidden="true"></a></span>
+<span id="cb39-7"><a href="data-manipulation.html#cb39-7" aria-hidden="true"></a><span class="co"># OR (|)</span></span>
+<span id="cb39-8"><a href="data-manipulation.html#cb39-8" aria-hidden="true"></a><span class="co"># the order of comparisons can be structured with parentheses. Here we want the OR comparison</span></span>
+<span id="cb39-9"><a href="data-manipulation.html#cb39-9" aria-hidden="true"></a><span class="co"># to happen before the AND comparison.</span></span>
+<span id="cb39-10"><a href="data-manipulation.html#cb39-10" aria-hidden="true"></a></span>
+<span id="cb39-11"><a href="data-manipulation.html#cb39-11" aria-hidden="true"></a>dog_licenses.loc[(dog_licenses[<span class="st">&#39;animal_name&#39;</span>] <span class="op">==</span> <span class="st">&#39;MILEY&#39;</span>) <span class="op">&amp;</span> ((dog_licenses[<span class="st">&#39;breed_name&#39;</span>] <span class="op">==</span> <span class="st">&#39;Boxer&#39;</span>)</span>
+<span id="cb39-12"><a href="data-manipulation.html#cb39-12" aria-hidden="true"></a>         <span class="op">|</span> (dog_licenses[<span class="st">&#39;breed_name&#39;</span>] <span class="op">==</span> <span class="st">&#39;Labrador Retriever&#39;</span>)),  <span class="st">&#39;animal_name&#39;</span> : <span class="st">&#39;breed_name&#39;</span>]</span></code></pre></div>
+</div>
+</div>
+<div id="how-can-i-calculate-new-values" class="section level2" number="4.3">
+<h2><span class="header-section-number">4.3</span> How can I calculate new values?</h2>
+<p>A new column can be added to a data frame by
+assigning values to a new column label. The assigned values should be either the same length as the
+original data frame, or a single value.</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb40-1"><a href="data-manipulation.html#cb40-1" aria-hidden="true"></a><span class="co"># create a new column and fill all rows with the value &#39;test&#39;</span></span>
+<span id="cb40-2"><a href="data-manipulation.html#cb40-2" aria-hidden="true"></a>dog_licenses[<span class="st">&#39;new_column&#39;</span>] <span class="op">=</span> <span class="st">&#39;test&#39;</span></span>
+<span id="cb40-3"><a href="data-manipulation.html#cb40-3" aria-hidden="true"></a>dog_licenses.head()</span>
+<span id="cb40-4"><a href="data-manipulation.html#cb40-4" aria-hidden="true"></a></span>
+<span id="cb40-5"><a href="data-manipulation.html#cb40-5" aria-hidden="true"></a><span class="co"># drop the column we just made</span></span>
+<span id="cb40-6"><a href="data-manipulation.html#cb40-6" aria-hidden="true"></a>dog_licenses <span class="op">=</span> dog_licenses.drop(columns<span class="op">=</span><span class="st">&#39;new_column&#39;</span>)</span></code></pre></div>
+<p>We can also create new columns by doing operations on existing columns.
+For example, let’s create a column with the length of the dog’s name.</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb41-1"><a href="data-manipulation.html#cb41-1" aria-hidden="true"></a><span class="co"># create a new column called &#39;name_length&#39;</span></span>
+<span id="cb41-2"><a href="data-manipulation.html#cb41-2" aria-hidden="true"></a><span class="co"># the accessor `.str` gives access to string methods that can be applied to the column values, e.g. `len()`</span></span>
+<span id="cb41-3"><a href="data-manipulation.html#cb41-3" aria-hidden="true"></a>dog_licenses[<span class="st">&#39;name_length&#39;</span>] <span class="op">=</span> dog_licenses[<span class="st">&#39;animal_name&#39;</span>].<span class="bu">str</span>.<span class="bu">len</span>()</span>
+<span id="cb41-4"><a href="data-manipulation.html#cb41-4" aria-hidden="true"></a></span>
+<span id="cb41-5"><a href="data-manipulation.html#cb41-5" aria-hidden="true"></a><span class="co"># we can see that the new column has been added to the end of the data frame</span></span>
+<span id="cb41-6"><a href="data-manipulation.html#cb41-6" aria-hidden="true"></a>dog_licenses.columns</span></code></pre></div>
+<p>Let’s create a column with the age of each animal at the time it was licensed.
+Note: this step takes a few seconds to run.</p>
+<p>To calculate the age of each animal at licensing, we’ll use the animal birth date
+and the date it was licensed. <code>pandas</code> has a data type called <code>datetime</code> that
+allows it to deal with dates: subtracting two dates, for instance, is different
+than subtracting two numbers. The function <code>to_datetime()</code> converts a string
+into a <code>datetime</code> object.</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb42-1"><a href="data-manipulation.html#cb42-1" aria-hidden="true"></a><span class="co"># use to_datetime to create a datetime object for each date we&#39;re using</span></span>
+<span id="cb42-2"><a href="data-manipulation.html#cb42-2" aria-hidden="true"></a>animal_birth_date <span class="op">=</span> pd.to_datetime(dog_licenses[<span class="st">&#39;animal_birth_date&#39;</span>])</span>
+<span id="cb42-3"><a href="data-manipulation.html#cb42-3" aria-hidden="true"></a>license_issued_datetime <span class="op">=</span> pd.to_datetime(dog_licenses[<span class="st">&#39;license_issued_date&#39;</span>])</span>
+<span id="cb42-4"><a href="data-manipulation.html#cb42-4" aria-hidden="true"></a></span>
+<span id="cb42-5"><a href="data-manipulation.html#cb42-5" aria-hidden="true"></a><span class="co"># subtract the birth date from the license date</span></span>
+<span id="cb42-6"><a href="data-manipulation.html#cb42-6" aria-hidden="true"></a>age_when_licensed <span class="op">=</span> license_issued_datetime <span class="op">-</span> animal_birth_date</span>
+<span id="cb42-7"><a href="data-manipulation.html#cb42-7" aria-hidden="true"></a></span>
+<span id="cb42-8"><a href="data-manipulation.html#cb42-8" aria-hidden="true"></a><span class="co"># assign age_when_licensed to a new column</span></span>
+<span id="cb42-9"><a href="data-manipulation.html#cb42-9" aria-hidden="true"></a>dog_licenses[<span class="st">&#39;age_when_licensed&#39;</span>] <span class="op">=</span> age_when_licensed</span></code></pre></div>
+</div>
+<div id="how-can-i-tell-whats-gone-wrong-in-my-programs" class="section level2" number="4.4">
+<h2><span class="header-section-number">4.4</span> How can I tell what’s gone wrong in my programs?</h2>
+<p>Typos and errors are inevitable - they happen to everyone. Python provides
+error messages if it can’t run your code that will help you figure out where
+the problem is. Generally, there are two types of errors: syntax errors - where Python can’t execute the code, e.g. due to a missing parenthesis; and runtime erros - where Python executed the code but ran into an illegal operation, e.g. an undefined variable name was used in an operation.</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb43-1"><a href="data-manipulation.html#cb43-1" aria-hidden="true"></a><span class="co"># this code generates a syntax error</span></span>
+<span id="cb43-2"><a href="data-manipulation.html#cb43-2" aria-hidden="true"></a>dog_licenses[<span class="st">&#39;animal_name&#39;</span></span></code></pre></div>
+<p>The very bottom of the error message is the most helpul place to start looking:
+this says what kind of error it is (e.g. <code>SyntaxError</code>, <code>ValueError</code>,
+<code>TypeError</code>, etc) and sometimes includes a message that describes what went
+wrong.</p>
+<p>The caret (<code>^</code>, similar to an up-arrow) points to the place where the error happened: in this case, there’s a
+missing square bracket, so the error we got was that Python reached the end of
+the file before it expected to because we didn’t include proper punctuation.</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb44-1"><a href="data-manipulation.html#cb44-1" aria-hidden="true"></a><span class="co"># this code generates a TypeError error (there&#39;s nothing wrong with the syntax,</span></span>
+<span id="cb44-2"><a href="data-manipulation.html#cb44-2" aria-hidden="true"></a><span class="co"># but Python can&#39;t execute it because of a different error)</span></span>
+<span id="cb44-3"><a href="data-manipulation.html#cb44-3" aria-hidden="true"></a></span>
+<span id="cb44-4"><a href="data-manipulation.html#cb44-4" aria-hidden="true"></a>dog_licenses[<span class="st">&#39;animal_name&#39;</span>] <span class="op">&lt;</span> dog_licenses[<span class="st">&#39;zip_code&#39;</span>]</span></code></pre></div>
+<p>The last line again tells us what went wrong, but this time we get a
+<em>traceback</em>: Python is showing us the series of steps that it followed
+internally before it hit an error. This is helpful because often the error will
+ultimately occur inside a function we’re using but whose code we haven’t ever
+seen, so Python shows us both what specifically went wrong inside the function,
+but also what line of our code caused the original cascade. Here, the offending
+line is pointed to at the very top of the traceback, and by reading the error
+message at the bottom we can see that the problem was that we can’t use the
+‘less than’ <code>&lt;</code> comparison between two objects when one is a string
+(<code>dog_licenses['animal_name']</code>) and the other is an integer (<code>dog_licenses['zip_code']</code>).</p>
+</div>
+<div id="how-can-i-summarize-and-group-my-data" class="section level2" number="4.5">
+<h2><span class="header-section-number">4.5</span> How can I summarize and group my data?</h2>
+<p>Many data analysis tasks can be approached using the <em>split-apply-combine
+paradigm</em>: split the data into groups, apply some analysis to each group, and
+then combine the results.</p>
+<p><code>pandas</code> facilitates this workflow through the use of <code>groupby()</code> to split
+data and summary/aggregation functions such as <code>mean()</code> which collapses each
+group into a single-row summary of that group. The arguments to <code>groupby()</code> are
+the column names that contain the categorical variables by which summary
+statistics should be calculated.</p>
+<p>Let’s start with a smaller data frame of the top 10 most common dog breeds and
+with only boroughs that are listed 5 or more times.</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb45-1"><a href="data-manipulation.html#cb45-1" aria-hidden="true"></a><span class="co"># get a list of the 10 most common breed names</span></span>
+<span id="cb45-2"><a href="data-manipulation.html#cb45-2" aria-hidden="true"></a><span class="co"># the attribute &#39;index&#39; gives us just the row descriptions and not the values</span></span>
+<span id="cb45-3"><a href="data-manipulation.html#cb45-3" aria-hidden="true"></a>common_breeds <span class="op">=</span> dog_licenses[<span class="st">&#39;breed_name&#39;</span>].value_counts()[:<span class="dv">10</span>].index</span>
+<span id="cb45-4"><a href="data-manipulation.html#cb45-4" aria-hidden="true"></a></span>
+<span id="cb45-5"><a href="data-manipulation.html#cb45-5" aria-hidden="true"></a><span class="co"># create a new data frame with only the common breeds</span></span>
+<span id="cb45-6"><a href="data-manipulation.html#cb45-6" aria-hidden="true"></a>dog_licenses_common_breeds <span class="op">=</span> dog_licenses[dog_licenses[<span class="st">&#39;breed_name&#39;</span>].isin(common_breeds)]</span></code></pre></div>
+<p><code>groupby()</code> enables us to break the data down into groups and perform operations
+on each group. To look at how many animals of each sex there are in each of the
+most common breeds, we can use <code>groupby()</code>:</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb46-1"><a href="data-manipulation.html#cb46-1" aria-hidden="true"></a>dog_licenses_common_breeds.groupby(<span class="st">&#39;breed_name&#39;</span>)[<span class="st">&#39;animal_gender&#39;</span>].value_counts()</span></code></pre></div>
+<p>For some breeds, male dogs are much more common, but for other dogs the ratio
+is about equal.</p>
+<p>Other summary statistics, such as the mean, minimum, and maximum can be calculated:</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb47-1"><a href="data-manipulation.html#cb47-1" aria-hidden="true"></a>dog_licenses_common_breeds.groupby([<span class="st">&#39;borough&#39;</span>])[<span class="st">&#39;name_length&#39;</span>].mean()</span></code></pre></div>
+<p>Groups can also be created from multiple columns. For example, we can group by
+both breed and borough and look for the maximum name length:</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb48-1"><a href="data-manipulation.html#cb48-1" aria-hidden="true"></a>dog_licenses_common_breeds.groupby([<span class="st">&#39;borough&#39;</span>, <span class="st">&#39;breed_name&#39;</span>])[<span class="st">&#39;name_length&#39;</span>].<span class="bu">max</span>()</span>
+<span id="cb48-2"><a href="data-manipulation.html#cb48-2" aria-hidden="true"></a></span>
+<span id="cb48-3"><a href="data-manipulation.html#cb48-3" aria-hidden="true"></a><span class="co"># add a sort to show the longest name first</span></span>
+<span id="cb48-4"><a href="data-manipulation.html#cb48-4" aria-hidden="true"></a>dog_licenses_common_breeds.groupby([<span class="st">&#39;borough&#39;</span>, <span class="st">&#39;breed_name&#39;</span>])[<span class="st">&#39;name_length&#39;</span>].<span class="bu">max</span>().sort_values(ascending<span class="op">=</span><span class="va">False</span>)</span></code></pre></div>
+<p>A Yorkshire Terrier from Manhattan holds the longest name in the dataset.</p>
+<p>Instead of choosing a single summary statistic to calculate each time, the more
+general <code>agg()</code> method can be called to aggregate or summarize by <em>any</em>
+existing aggregation functions. This approach is more flexible and powerful
+since multiple aggregation functions can be applied in the same line of code by
+passing them as a list to <code>agg()</code>.</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb49-1"><a href="data-manipulation.html#cb49-1" aria-hidden="true"></a>dog_licenses_common_breeds.groupby([<span class="st">&#39;breed_name&#39;</span>])[<span class="st">&#39;name_length&#39;</span>].agg([<span class="st">&#39;count&#39;</span>,<span class="st">&#39;min&#39;</span>, <span class="st">&#39;max&#39;</span>, <span class="st">&#39;mean&#39;</span>])</span></code></pre></div>
+<p>Yorkshire Terriers also have the largest mean name length of the top 10 breeds.</p>
+</div>
+<div id="how-can-i-save-my-results" class="section level2" number="4.6">
+<h2><span class="header-section-number">4.6</span> How can I save my results?</h2>
+<p>We can use the <code>to_csv()</code> command to do export a data frame in CSV format. Note
+that the code below will by default save the data into the current working
+directory. We can save it to a different folder by adding the foldername and a
+slash to the filename. We use the ‘index=False’ so that pandas doesn’t include
+the index number for each line.</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb50-1"><a href="data-manipulation.html#cb50-1" aria-hidden="true"></a><span class="co"># Write data frame to CSV</span></span>
+<span id="cb50-2"><a href="data-manipulation.html#cb50-2" aria-hidden="true"></a>dog_licenses_common_breeds.to_csv(<span class="st">&#39;dog_licenses_common.csv&#39;</span>, index<span class="op">=</span><span class="va">False</span>)</span></code></pre></div>
+</div>
+<div id="how-can-i-tidy-up-my-data" class="section level2" number="4.7">
+<h2><span class="header-section-number">4.7</span> How can I tidy up my data?</h2>
+<p>Even carefully created and curated data can present difficulties at the analysis step.
+Here are a few tidying steps you might consider when exploring a new data set.</p>
+<div id="modifying-column-names" class="section level3" number="4.7.1">
+<h3><span class="header-section-number">4.7.1</span> Modifying column names</h3>
+<p>In this book we are using <em>snake case</em> for column names (<code>snake_case</code>,
+see the <a href="https://github.com/merely-useful/merely-useful.github.io/blob/c1bef59634070573922f30dd933acc20cb3ff300/style.Rmd">style guide</a>
+for more information about coding format and style), but another common format
+is called <em>camel case</em> (<code>CamelCase</code>). The following code uses the package <code>inflection</code>
+to convert a list of column names from snake case to camel case.</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb51-1"><a href="data-manipulation.html#cb51-1" aria-hidden="true"></a><span class="co"># import the underscore function which creates camel case</span></span>
+<span id="cb51-2"><a href="data-manipulation.html#cb51-2" aria-hidden="true"></a><span class="im">from</span> inflection <span class="im">import</span> underscore</span>
+<span id="cb51-3"><a href="data-manipulation.html#cb51-3" aria-hidden="true"></a><span class="im">from</span> inflection <span class="im">import</span> camelize</span>
+<span id="cb51-4"><a href="data-manipulation.html#cb51-4" aria-hidden="true"></a></span>
+<span id="cb51-5"><a href="data-manipulation.html#cb51-5" aria-hidden="true"></a><span class="co"># here&#39;s what the columns look like in snake case</span></span>
+<span id="cb51-6"><a href="data-manipulation.html#cb51-6" aria-hidden="true"></a>dog_licenses.columns</span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb52-1"><a href="data-manipulation.html#cb52-1" aria-hidden="true"></a><span class="co"># get a list of columns in camel case for the data frame </span></span>
+<span id="cb52-2"><a href="data-manipulation.html#cb52-2" aria-hidden="true"></a>camel_case_columns <span class="op">=</span> [camelize(column) <span class="cf">for</span> column <span class="kw">in</span> dog_licenses.columns]</span>
+<span id="cb52-3"><a href="data-manipulation.html#cb52-3" aria-hidden="true"></a></span>
+<span id="cb52-4"><a href="data-manipulation.html#cb52-4" aria-hidden="true"></a><span class="co"># reassign the columns </span></span>
+<span id="cb52-5"><a href="data-manipulation.html#cb52-5" aria-hidden="true"></a>dog_licenses.columns <span class="op">=</span> camel_case_columns</span>
+<span id="cb52-6"><a href="data-manipulation.html#cb52-6" aria-hidden="true"></a></span>
+<span id="cb52-7"><a href="data-manipulation.html#cb52-7" aria-hidden="true"></a><span class="co"># here&#39;s what the columns now look like in camel case</span></span>
+<span id="cb52-8"><a href="data-manipulation.html#cb52-8" aria-hidden="true"></a>dog_licenses.columns</span>
+<span id="cb52-9"><a href="data-manipulation.html#cb52-9" aria-hidden="true"></a></span>
+<span id="cb52-10"><a href="data-manipulation.html#cb52-10" aria-hidden="true"></a><span class="co"># here is to revert to snake case</span></span>
+<span id="cb52-11"><a href="data-manipulation.html#cb52-11" aria-hidden="true"></a>snake_case_columns <span class="op">=</span> [underscore(column) <span class="cf">for</span> column <span class="kw">in</span> dog_licenses.columns]</span>
+<span id="cb52-12"><a href="data-manipulation.html#cb52-12" aria-hidden="true"></a></span>
+<span id="cb52-13"><a href="data-manipulation.html#cb52-13" aria-hidden="true"></a>dog_licenses.columns <span class="op">=</span> snake_case_columns</span></code></pre></div>
+<p>If the column names have any whitespace in them, the following one-liner will
+rename them without the whitespace.</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb53-1"><a href="data-manipulation.html#cb53-1" aria-hidden="true"></a><span class="co"># Remove whitespace from column names</span></span>
+<span id="cb53-2"><a href="data-manipulation.html#cb53-2" aria-hidden="true"></a>dog_licenses <span class="op">=</span> dog_licenses.rename(columns<span class="op">=</span><span class="kw">lambda</span> x: x.strip())</span></code></pre></div>
+<p>You might also decide that you don’t want to keep some columns; you can drop them
+from the data frame using the method <code>drop()</code>. For example, the following code drops the columns
+<code>city_council_district</code> and <code>census_tract_2010</code> from the <code>dog_licenses</code> data frame.</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb54-1"><a href="data-manipulation.html#cb54-1" aria-hidden="true"></a><span class="co"># drop two columns</span></span>
+<span id="cb54-2"><a href="data-manipulation.html#cb54-2" aria-hidden="true"></a>dog_licenses <span class="op">=</span> dog_licenses.drop(columns<span class="op">=</span>[<span class="st">&quot;city_council_district&quot;</span>, <span class="st">&quot;census_tract_2010&quot;</span>])</span></code></pre></div>
+</div>
+<div id="cleaning-values" class="section level3" number="4.7.2">
+<h3><span class="header-section-number">4.7.2</span> Cleaning values</h3>
+<p>Often, data entered by humans can have errors or inconsistent formats. The values
+in the <code>borough</code> column of the dog license data are a good example. To see all the
+unique values in this column, we can use the pandas method <code>unique()</code>.</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb55-1"><a href="data-manipulation.html#cb55-1" aria-hidden="true"></a><span class="co"># list all boroughs</span></span>
+<span id="cb55-2"><a href="data-manipulation.html#cb55-2" aria-hidden="true"></a>dog_licenses[<span class="st">&#39;borough&#39;</span>].unique()</span></code></pre></div>
+<p>Instead of the names of the unique boroughs, the number of boroughs can be
+returned with the nunique() method.</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb56-1"><a href="data-manipulation.html#cb56-1" aria-hidden="true"></a><span class="co"># list all boroughs</span></span>
+<span id="cb56-2"><a href="data-manipulation.html#cb56-2" aria-hidden="true"></a>dog_licenses[<span class="st">&#39;borough&#39;</span>].nunique()</span></code></pre></div>
+<p>The number of dog registrations for each borough can be computed with the
+<code>value_counts()</code> method.</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb57-1"><a href="data-manipulation.html#cb57-1" aria-hidden="true"></a><span class="co"># list and count all the values of &#39;borough&#39;</span></span>
+<span id="cb57-2"><a href="data-manipulation.html#cb57-2" aria-hidden="true"></a>dog_licenses[<span class="st">&#39;borough&#39;</span>].value_counts()</span></code></pre></div>
+<p>There are at least three different variations of <code>New York</code> with various capitalizations.
+<code>New York</code>, <code>NEW YORK</code>, and <code>new york</code> should probably all be considered the same
+borough, but unless we do something to these names, <code>pandas</code> will consider them unique.</p>
+<p>A good first pass to clean this up is to apply some string methods to this column.
+The method <code>str</code> allows us to use any Python function that works on strings and
+apply it to a data frame.</p>
+<p>We can convert all the boroughs to lower case to combine all the names with
+the same spelling but different capitalizations.</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb58-1"><a href="data-manipulation.html#cb58-1" aria-hidden="true"></a>dog_licenses[<span class="st">&#39;borough&#39;</span>] <span class="op">=</span> dog_licenses[<span class="st">&#39;borough&#39;</span>].<span class="bu">str</span>.lower()</span></code></pre></div>
+<p>This reduces the number of unique boroughs. Not bad, but another look
+at <code>dog_licenses['borough'].value_counts()</code> shows us that we still have some issues:
+‘staten island’ and ‘staten is’ are two different values that probably refer to the
+same borough. At this point automatic processing might give way to some human
+oversight: for instance, we could look up the true names of New York’s boroughs
+and see that there are only five. We could then cross-reference the ‘borough’ column
+with other location information like the zip code or city council district to assign
+correct boroughs to some of the mis-named ones. We could also do a few things
+manually, such as renaming ‘staten is’
+to ‘staten island’, which would take care of 267 mis-labeled entries.</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb59-1"><a href="data-manipulation.html#cb59-1" aria-hidden="true"></a><span class="co"># replace values in the &#39;borough&#39; column</span></span>
+<span id="cb59-2"><a href="data-manipulation.html#cb59-2" aria-hidden="true"></a>dog_licenses[<span class="st">&#39;borough&#39;</span>] <span class="op">=</span> dog_licenses[<span class="st">&#39;borough&#39;</span>].replace(<span class="st">&#39;staten is&#39;</span>, <span class="st">&#39;staten island&#39;</span>)</span></code></pre></div>
+<p>We could also decide that it’s not worth it to meticulously fix the stragglers and
+drop any rows whose borough appears less than, say, five times in the dataset.</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb60-1"><a href="data-manipulation.html#cb60-1" aria-hidden="true"></a><span class="co"># get a list of the unique borough names</span></span>
+<span id="cb60-2"><a href="data-manipulation.html#cb60-2" aria-hidden="true"></a>borough_names <span class="op">=</span> dog_licenses[<span class="st">&#39;borough&#39;</span>].unique()</span>
+<span id="cb60-3"><a href="data-manipulation.html#cb60-3" aria-hidden="true"></a></span>
+<span id="cb60-4"><a href="data-manipulation.html#cb60-4" aria-hidden="true"></a><span class="co"># since the value_counts sorts the borough names, let&#39;s first store the sorted borough names</span></span>
+<span id="cb60-5"><a href="data-manipulation.html#cb60-5" aria-hidden="true"></a>sorted_borough_names <span class="op">=</span> dog_licenses[<span class="st">&#39;borough&#39;</span>].value_counts().index.values</span>
+<span id="cb60-6"><a href="data-manipulation.html#cb60-6" aria-hidden="true"></a></span>
+<span id="cb60-7"><a href="data-manipulation.html#cb60-7" aria-hidden="true"></a><span class="co"># get a list of all the borough names that have 5 or more members:</span></span>
+<span id="cb60-8"><a href="data-manipulation.html#cb60-8" aria-hidden="true"></a>large_borough_names <span class="op">=</span> sorted_borough_names[dog_licenses[<span class="st">&#39;borough&#39;</span>].value_counts() <span class="op">&gt;=</span> <span class="dv">5</span>]</span>
+<span id="cb60-9"><a href="data-manipulation.html#cb60-9" aria-hidden="true"></a></span>
+<span id="cb60-10"><a href="data-manipulation.html#cb60-10" aria-hidden="true"></a><span class="co"># the method `isin(list)` returns True or False for each row if the value is in `list`</span></span>
+<span id="cb60-11"><a href="data-manipulation.html#cb60-11" aria-hidden="true"></a>dog_licenses_large_boroughs <span class="op">=</span> dog_licenses[dog_licenses[<span class="st">&#39;borough&#39;</span>].isin(large_borough_names)]</span>
+<span id="cb60-12"><a href="data-manipulation.html#cb60-12" aria-hidden="true"></a></span>
+<span id="cb60-13"><a href="data-manipulation.html#cb60-13" aria-hidden="true"></a><span class="co"># look at the unique boroughs after this operation</span></span>
+<span id="cb60-14"><a href="data-manipulation.html#cb60-14" aria-hidden="true"></a>dog_licenses_large_boroughs[<span class="st">&#39;borough&#39;</span>].value_counts()</span></code></pre></div>
+</div>
+</div>
+<div id="data-manipulation-summary" class="section level2" number="4.8">
+<h2><span class="header-section-number">4.8</span> Summary</h2>
+</div>
+<div id="data-manipulation-exercises" class="section level2" number="4.9">
+<h2><span class="header-section-number">4.9</span> Exercises</h2>
+<ol style="list-style-type: decimal">
+<li><strong>Understanding data frame structure</strong></li>
+</ol>
+<p>Based on the output of <code>dog_licenses.info()</code>, can you answer the following questions?</p>
+<ul>
+<li>What is the class of the object <code>dog_licenses</code> (where
+<code>dog_licenses = pd.read_csv("data/nyc-dog-licenses.csv")</code>)?</li>
+<li>How many rows and how many columns are in this object?</li>
+<li>Why is there not the same number of rows (observations) for each column?</li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li><strong>Finding messy values</strong></li>
+</ol>
+<ul>
+<li>Get a list of the unique values in the <code>breed_name</code> column of the dog license
+data using <code>value_counts()</code> or <code>unique()</code>. Sort this list alphabetically. (Hint:
+use the <code>sort_values()</code> function.) Look at the first 50 values. Do you see any
+breed names that should be combined?</li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li><strong>Subsetting data by row</strong></li>
+</ol>
+<ul>
+<li><p>Extract the 200th and 201st row of the dog license dataset and assign the
+resulting data frame to a new variable name (i.e. <code>data_200_201</code>). Remember
+that Python indexing starts at 0!</p></li>
+<li><p>With the data frame <code>dog_licenses = pd.read_csv("data/nyc-dog-licenses.csv")</code>:</p>
+<ul>
+<li>How can you get the same result as from <code>dog_licenses.head()</code> by using row slices
+instead of the <code>head()</code> method?</li>
+</ul></li>
+<li><p>There are at least three distinct ways to extract the last row of a data
+frame. How many can you come up with?</p></li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li><strong>Selecting and filtering data</strong></li>
+</ol>
+<ul>
+<li><p>Subset the dog license data frame <code>data</code> to include only female dogs and retain
+only the columns ‘animal_name’, ‘animal_gender’ and ‘breed_name’. There are
+multiple ways this could be done.</p></li>
+<li><p>How many dog licenses belong to dogs named “Queen” that live in “Queens”?</p></li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li><strong>Error messages</strong></li>
+</ol>
+<p>Run the following code. What type of error does it generate?</p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb61-1"><a href="data-manipulation.html#cb61-1" aria-hidden="true"></a>dog_licenses.loc[<span class="dv">0</span>:<span class="dv">10</span>, <span class="st">&#39;animal_name&#39;</span>, <span class="st">&#39;breed_name&#39;</span>]</span></code></pre></div>
+<p>Edit the code to prevent it from causing an error.</p>
+<ol start="4" style="list-style-type: decimal">
+<li><p><strong>Creating new columns</strong></p></li>
+<li><p>Add two new columns to the <code>dog_licenses</code> data frame: one that contains the length of the
+breed name from the <code>breed_name</code> column, and one that contains just the first
+letter of the <code>animal_name</code> column.</p></li>
+<li><p>Create a new data frame from the dog license data frame <code>dog_licenses</code> that contains only the <code>animal_birth_date</code>, <code>animal_name</code>, and <code>breed_name</code> columns.
+Add two new columns to this new data frame: one called <code>birth_year</code> which contains just the year from the <code>animal_birth_date</code> column, and one
+called <code>birth_month</code> which contains just the month from the <code>animal_birth_date</code> column.</p></li>
+<li><p><strong>groupby()</strong></p></li>
+<li><p>Use <code>groupby()</code> and <code>agg()</code> with the dog license data frame <code>dog_licenses</code> after adding the <code>age_when_licensed</code> column to find the mean, min, and max age when a dog was licensed in days grouped by <code>borough</code>. Hint: the pandas <code>timedelta</code> format of the <code>age_when_licensed</code> column will make calculating numeric quantities difficult; try creating a new column for the licensed age in days using <code>dog_licenses['age_when_licensed'].dt.days</code>.</p></li>
+</ol>
+<p>Which borough has the largest mean time until licensing? Return the columns <code>breed_name</code>, <code>borough</code>, and <code>age_when_licensed</code>. Hint: Look into the <code>idxmax()</code> method.</p>
+<ol start="2" style="list-style-type: decimal">
+<li>How many dogs are female and how many are male?</li>
+</ol>
+</div>
+<div id="data-manipulation-keypoints" class="section level2" number="4.10">
+<h2><span class="header-section-number">4.10</span> Key Points</h2>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="getting-started.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="dev-development.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": null,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/merely-useful/novice-py/edit/master/chapters/data-manipulation.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
