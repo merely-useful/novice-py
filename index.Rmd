@@ -1,16 +1,84 @@
-# Novice Goals {#novice-goals}
+---
+title: "Merely Useful: Novice Python"
+author: "Madeleine Bonsma-Fisher, Kate Hertweck, Damien Irving, Luke Johnston, Christina Koch, Sara Mahallati, Joel Ostblom, Elizabeth Wickes, Charlotte Wickham, and Greg Wilson"
+bibliography: book.bib
+csl: jcb.csl
+documentclass: book
+citation-package: none
+link-citations: yes
+github-repo: merely-useful/merely-useful.github.io
+site: bookdown::bookdown_site
+date: "`r Sys.Date()`"
+lot: yes
+lof: yes
+---
 
-```{r novice-goals-setup, include=FALSE}
+# Overview {#overview}
+
+```{r py-index-setup, include=FALSE}
 source(here::here("_common.R"))
 ```
+
+> It's still magic even if you know how it's done.
+>
+> — Terry Pratchett
+
+FIXME: general introduction
+
+-   Be able to do the steps in @Yenn2019.
+
+## Why isn't all of this normal already? {#overview-against}
+
+Nobody argues that research should be irreproducible or unsustainable,
+but "not against it" and actively supporting it are very different things.
+Academia doesn't yet know how to reward people for writing useful software,
+so while you may be thanked,
+the extra effort you put in may not translate into job security or decent pay.
+
+And some people still argue against openness,
+Being open is a big step toward a (non-academic) career path,
+which is where approximately 80% of PhDs go,
+and for those staying in academia,
+open work is cited more often than closed (FIXME: citation).
+However,
+some people still worry that if they make their data and code generally available,
+someone else will use it and publish a result they have come up with themselves.
+This is almost unheard of in practice,
+but that doesn't stop people using it as a boogeyman.
+
+Other people are afraid of looking foolish or incompetent by sharing code that might contain bugs.
+This isn't just [impostor syndrome][impostor-syndrome]:
+members of marginalized groups are frequently judged more harshly than others (FIXME: citation).
+
+## Contributing
+
+Please read the [CONTRIBUTING] guidelines if you would like to contribute 
+to this book.
+
+## Acknowledgments {#overview-ack}
+
+This book owes its existence to
+the hundreds of researchers we met through [the Carpentries][carpentries].
+We are also grateful to [Insight Data Science][insight] for sponsoring the early stages of this work,
+to everyone who has contributed,
+and to:
+
+-   *Practical Computing for Biologists* @Hadd2010
+-   *Effective Computation in Physics* @Scop2015
+-   "A Quick Guide to Organizing Computational Biology Projects" @Nobl2009
+-   "Ten Simple Rules for Making Research Software More Robust" @Tasc2017
+-   "Best Practices for Scientific Computing" @Wils2014
+-   "Good Enough Practices in Scientific Computing" @Wils2017
+
+## Goals for this course {#goals}
 
 This outline describes the questions that the novice courses on R and Python will answer.
 The advanced course can then assume that learners have hands-on experience with these topics
 but nothing more.
 
-## Personas
+### Personas
 
-### Anya
+#### Anya
 
 **Anya** is a professor of neuropsychology
 who is responsible for teaching her department's introduction to statistics
@@ -36,7 +104,7 @@ This guide has modular lessons and exercises that she can adapt to use in her co
 and suggestions for how to make learning interactive with a large class size.
 She also finds helpful instructions for applying time series analysis to data using R.
 
-### Exton
+#### Exton
 
 **Exton** taught business at a community college before joining a friend's startup,
 and now does community management for a company that builds healthcare software.
@@ -62,7 +130,7 @@ He carefully works through that particular example,
 then goes back and works through some of the earlier material in the book.
 He can tell that it won't take long to get this to work with his data.
 
-### Irwin
+#### Irwin
 
 **Irwin**, 18, is five months into an undergraduate degree in urban planning.
 He's read lots of gushing articles in *Wired* about data science,
@@ -84,7 +152,7 @@ He loves the examples that use urban data,
 and right away he has tons of ideas about where to get more cool data to analyze.
 His urban data science blog is already taking shape in his head.
 
-### Camilla
+#### Camilla
 
 **Camilla** recently started a job as an assistant professor.
 Her department (Medieval Studies) is trying to develop a digital humanities data-science-heavy undergraduate program,
@@ -103,7 +171,7 @@ She looks up the examples of text and image analysis
 and compares how both R and Python approach those kinds of data
 to help her make a decision about which language to teach.
 
-### Jordan
+#### Jordan
 
 **Jordan** is a third-year undergraduate student in ecology.
 Two months ago she started working part-time for a professor in her department,
@@ -120,7 +188,9 @@ As she works through examples,
 she realizes that she'll need to change a few things about how she records her data in spreadsheets
 so that it will be easier to analyze in R.
 
-## Getting started
+### General Outline
+
+#### Getting started
 
 -   What are the different ways I can interact with software?
     -   console
@@ -131,7 +201,7 @@ so that it will be easier to analyze in R.
 -   How can I inspect data while I'm working on it?
     -   table viewers
 
-## Data manipulation
+#### Data manipulation
 
 -   How can I read tabular data into a program?
     -   what CSV is, where it comes from, and why people use it
@@ -160,7 +230,7 @@ so that it will be easier to analyze in R.
     -   map
     -   loops and conditionals
 
-## Plotting
+#### Plotting
 
 -   Why plot?
     -   summary statistics can mislead
@@ -190,7 +260,7 @@ so that it will be easier to analyze in R.
     -   maps
     -   3D visualization
 
-## Development
+#### Development
 
 -   How can I make my own functions?
     -   declaring functions
@@ -210,7 +280,7 @@ so that it will be easier to analyze in R.
     -   virtual environments
     -   debuggers
 
-## Data analysis
+#### Data analysis
 
 -   How can I represent and manage missing values?
     -   NA
@@ -444,7 +514,7 @@ so that it will be easier to analyze in R.
     -   multiple linear regression
     -   anything with "machine learning" in its name
 
-## Version control
+#### Version control
 
 -   What is a version control system?
     -   a smarter kind of backup
@@ -469,7 +539,7 @@ so that it will be easier to analyze in R.
     -   pull requests
     -   git reflow --substantive --single-afferent-cycle --ia-ia-rebase-fhtagn ...
 
-## Publishing
+#### Publishing
 
 -   How do static websites work?
     -   URLs
@@ -496,7 +566,7 @@ so that it will be easier to analyze in R.
     -   filters
     -   inclusions
 
-## Reproducibility
+#### Reproducibility
 
 -   How can I make programs easy to read?
     -   coding style
@@ -521,7 +591,7 @@ so that it will be easier to analyze in R.
     -   continuous integration
     -   documentation generators
 
-## Collaboration
+#### Collaboration
 
 -   What kinds of licenses are there?
     -   open vs. closed
@@ -552,4 +622,3 @@ so that it will be easier to analyze in R.
     -   community management
     -   mental health
     -   assessment of this course
-
