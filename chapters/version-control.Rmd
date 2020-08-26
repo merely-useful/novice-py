@@ -1,15 +1,15 @@
-# Version Control {#py-version-control}
+# Version Control {#version-control}
 
 ```{r py-version-control-setup, include=FALSE}
 source(here::here("_common.R"))
 ```
 
-## Questions {#py-version-control-questions}
+## Objectives {#version-control}
 
-```{r, child="questions/py-version-control.md"}
+```{r, child="objectives/version-control.md"}
 ```
 
-## What is Version Control? {#py-version-control-intro}
+## What is Version Control? {#version-control-intro}
 
 FIXME: Figure - PhD Comics, A Story Told in File Names <http://phdcomics.com/comics.php?f=1323>
 
@@ -63,7 +63,7 @@ online spaces for hosting version controlled work.
 We'll be using a program called GitKraken to make it easier to use git, in the
 same way that we used the Spyder IDE to help us write Python code.
 
-## Creating a Repository {#py-version-control-repo}
+## Creating a Repository {#version-control-repo}
 
 To get started with tracking work, it's good to think about what scope of
 information you want to track. Does it make sense to track all of the files of your
@@ -109,7 +109,7 @@ folder. Now if we make any changes in that folder (or a sub-folder!), git
 will pay attention and be able to track it for us. Let's see what happens
 if we do this.
 
-## Tracking Changes {#py-version-control-tracking-changes}
+## Tracking Changes {#version-control-tracking-changes}
 
 As we add and modify files in our project folder, we want to record our changes.
 This is done by creating "commits" which are like snapshots of the repository at
@@ -178,7 +178,7 @@ developers can easily slip into commit messages like "@)#(*&#@)(*!", it's
 worth the extra few seconds to type something meangingful, especially for our
 next task: examining previous versions of files.
 
-## Examining Previous Versions {#py-version-control-examining-versions}
+## Examining Previous Versions {#version-control-examining-versions}
 
 We want to keep track of previous versions of a file because sometimes, it's
 important to go back and either access the previous version in total, or just
@@ -232,7 +232,7 @@ to a previous version and simultaneously commit it; clicking "no" will simply
 change the file back, but if you want to keep it, you have to go through the
 add and commit process yourself.
 
-## Online Repositories {#py-version-control-remote}
+## Online Repositories {#version-control-remote}
 
 To this point, we've used git features to track changes and compare versions
 of files in our project repository. An additional way to use git to manage our
@@ -314,7 +314,7 @@ working on a local copy of the repository, it's a good idea to "pull" from the
 online copy to make sure you're up-to-date, and then "push" at the end, to make
 sure your changes are available online.
 
-## Conflicts {#py-version-control-conflicts}
+## Conflicts {#version-control-conflicts}
 
 Even the most careful person will end up making changes in two different copies
 of the same repository and then trying to sync them together. Sometimes git is
@@ -383,7 +383,7 @@ the file by clicking the "X" and finish the update by clicking on
 knitr::include_graphics("figures/FIXME.png")
 ```
 
-## Using Local vs Remote Repositories {#py-version-control-local-vs-remote}
+## Using Local vs Remote Repositories {#version-control-local-vs-remote}
 
 In the previous section, we set up an online copy of our project repository.
 This wasn't too risky because our repository didn't have any large file or
@@ -402,7 +402,7 @@ Consider the following before you put it in an online repository:
         - If your data includes identifying information or other confidential
     features, it should be placed in a location with the appropriate security.
 
-## To Git-finity, and Beyond {#py-version-control-beyond}
+## To Git-finity, and Beyond {#version-control-beyond}
 
 Git was originally developed to manage a BIG and complex software project (development of the Linux operating system kernel) so as a version control system, it's also BIG and complex, with a lot of features that aren't needed for most everyday workflows, especially if you're mostly working by yourself. This chapter has covered what is most essential, and hopefully, most useful. If you find yourself working on more complex projects, especially with multiple collaborators, you may want to learn more about some of git's development and collaboration features. See (book 2?) for more information.
 
@@ -431,8 +431,8 @@ What does this message indicate about the state of the repository? What would yo
 
 Name some pros and cons of each option.
 
-## Key Points {#py-version-control-keypoints}
+## Key Points {#version-control-keypoints}
 
-```{r, child="keypoints/py-version-control.md"}
+```{r, child="keypoints/version-control.md"}
 ```
 

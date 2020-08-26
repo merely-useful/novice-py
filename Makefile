@@ -21,7 +21,6 @@ COMMON_FILES=\
   appendix.Rmd \
   LICENSE.md \
   CONDUCT.md \
-  CONTRIBUTING.md \
   gloss.md \
   references.Rmd \
   links.md \
@@ -46,7 +45,7 @@ html : ${ALL_HTML}
 
 _book/index.html : ${PY_NOVICE_FILES} ${COMMON_FILES}
 	rm -f novice-py.Rmd
-	Rscript -e "bookdown::render_book(input='index.Rmd', output_format='bookdown::gitbook'); warnings()"
+	Rscript -e "options(bookdown.render.file_scope = FALSE); bookdown::render_book(input='index.Rmd', output_format='bookdown::gitbook'); warnings()"
 	cp -r ${EXTRA} _book
 
 #-------------------------------------------------------------------------------
@@ -56,7 +55,7 @@ pdf : ${ALL_PDF}
 
 _book/novice-py.pdf : ${PY_FILES} ${COMMON_FILES}
 	rm -f novice-py.Rmd
-	Rscript -e "bookdown::render_book(input='index.Rmd', output_format='bookdown::pdf_book'); warnings()"
+	Rscript -e "options(bookdown.render.file_scope = FALSE); bookdown::render_book(input='index.Rmd', output_format='bookdown::pdf_book'); warnings()"
 
 #-------------------------------------------------------------------------------
 

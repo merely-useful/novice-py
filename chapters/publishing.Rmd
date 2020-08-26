@@ -1,12 +1,12 @@
-# Publishing {#py-publishing}
+# Publishing {#publishing}
 
 ```{r py-publishing-setup, include=FALSE}
 source(here::here("_common.R"))
 ```
 
-## Questions {#py-publishing-questions}
+## Objectives {#publishing}
 
-```{r, child="questions/py-publishing.md"}
+```{r, child="objectives/publishing.md"}
 ```
 
 ## Why should I share my work on the internet?

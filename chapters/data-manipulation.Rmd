@@ -1,4 +1,4 @@
-# Python data manipulation {#py-data-manipulation}
+# Python data manipulation {#data-manipulation}
 
 ```{r py-data-manipulation-setup, include=FALSE}
 source(here::here("_common.R"))
@@ -11,7 +11,7 @@ analyze tabular data easily and reproducibly.
 This material is based on a [workshop run by UofT Coders](https://github.com/UofTCoders/workshops-dc-python)
 and a [Data Carpentry Python workshop](https://datacarpentry.org/python-ecology-lesson/).
 
-## How can I read tabular data into a program? {#py-data-manipulation-reading}
+## How can I read tabular data into a program? {#data-manipulation-reading}
 
 The package `pandas` is built for working with tabular data, and the `pandas`
 function `read_csv()` takes a tabular text file as input and returns a `pandas`
@@ -61,7 +61,7 @@ Here's what the first few rows and columns of the dog license data look like if
 you open the file in a spreadsheet program:
 
 FIXME: This image needs to be added. It doesn't exist.
-<!-- ![dog license data in a spreadsheet program](./figures/py-data-manipulation/NYC-dog-licenses-snapshot.png) -->
+<!-- ![dog license data in a spreadsheet program](./figures/data-manipulation/NYC-dog-licenses-snapshot.png) -->
 
 The structure of the data is exactly the same after reading it with `read_csv()`.
 You can get a quick view of the data using the method `.head()`:
@@ -441,10 +441,10 @@ dog_licenses_large_boroughs = dog_licenses[dog_licenses['borough'].isin(large_bo
 dog_licenses_large_boroughs['borough'].value_counts()
 ```
 
-## Summary {#py-data-manipulation-summary}
+## Summary {#data-manipulation-summary}
 
 
-## Exercises {#py-data-manipulation-exercises}
+## Exercises {#data-manipulation-exercises}
 
 1. **Understanding data frame structure**
 
@@ -513,9 +513,9 @@ Edit the code to prevent it from causing an error.
   2. How many dogs are female and how many are male?
 
 
-## Key Points {#py-data-manipulation-keypoints}
+## Key Points {#data-manipulation-keypoints}
 
-```{r, child="keypoints/py-data-manipulation.md"}
+```{r, child="keypoints/data-manipulation.md"}
 ```
 
 ```{r, include=FALSE}

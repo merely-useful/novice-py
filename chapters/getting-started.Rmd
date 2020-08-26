@@ -1,12 +1,12 @@
-# Getting Started with Python {#py-getting-started}
+# Getting Started with Python {#getting-started}
 
 ```{r py-getting-started-setup, include=FALSE}
 source(here::here("_common.R"))
 ```
 
-## Questions {#py-getting-started-questions}
+## Objectives {#getting-started}
 
-```{r, child="questions/py-getting-started.md"}
+```{r, child="objectives/getting-started.md"}
 ```
 
 As stated in the intro, our overall goal is to work with people, programs
@@ -14,7 +14,7 @@ and data. In this section, we will focus on programs and data as we learn
 how to run Python code and
 how data is stored and accessed on a computer.
 
-## Introduction to Spyder {#py-getting-started-spyder}
+## Introduction to Spyder {#getting-started-spyder}
 
 Starting with programs - over the entirety of this book, we'll be writing
 programs (or, in verb form, *programming*) in order to accomplish our goals
@@ -41,7 +41,7 @@ We'll take it slowly and introduce the purpose of each pane one-by-one.
 To start with, we'll focus on the left and lower-right panes, as that's
 where the bulk of our coding will happen.
 
-## Running Code in the Console {#py-getting-started-console}
+## Running Code in the Console {#getting-started-console}
 
 Now that we have our code-writing-and-running environment open, it's time to
 actually run some code.
@@ -71,7 +71,7 @@ what they do; in upcoming chapters, we'll focus on functions that allow you to
 read in and manipulate data. At some point it may be helpful to write your
 *own* functions, which we'll also cover in another chapter.
 
-## Running Code via Scripts {#py-getting-started-script}
+## Running Code via Scripts {#getting-started-script}
 
 Can you imagine a situation where continuing to type code into the console
 could become tedious or challenging?
@@ -146,7 +146,7 @@ We have now told the computer what to do by using Python code, and we have run t
 code in two different ways within our "workbench" - the Spyder IDE. Let's
 see what else we can use in this environment to help us.
 
-## Variables, Objects, Methods {#py-getting-started-objects}
+## Variables, Objects, Methods {#getting-started-objects}
 
 Besides running functions that *do* something (as above), we'll also want
 to use Python to keep track of information that we're using throughout
@@ -194,7 +194,7 @@ information used by the `upper()` and `split()` string methods. Note how
 an `upper()` method makes sense for strings, but wouldn't make sense for
 a numeric object.
 
-## Getting Help in Spyder {#py-getting-started-spyder-help}
+## Getting Help in Spyder {#getting-started-spyder-help}
 
 That top-right pane can give us additional information; one of
 the other tabs says "Help". The main way to look up a particular function
@@ -219,7 +219,7 @@ You can see what methods are available for an object by typing the variable
 name into the console or script pane and then pressing `TAB`. This will bring
 up a list of possible methods to use.
 
-## Getting Help Online {#py-getting-started-web-help}
+## Getting Help Online {#getting-started-web-help}
 
 Sometimes, however, your questions won't fit well within the built-in help pages,
 available through Spyder. This often happens when you need to do something
@@ -283,8 +283,8 @@ expects as input, and what kind of output it produces?
     How can you count the occurrences of the letter "f"?
 
 1. After googling "how to read csv file python", these two answers pop up:
-  https://stackoverflow.com/questions/41585078/how-do-i-read-and-write-csv-files-with-python/41585079
-  https://stackoverflow.com/questions/5788521/reading-a-csv-file-using-python
+  https://stackoverflow.com/objectives/41585078/how-do-i-read-and-write-csv-files-with-python/41585079
+  https://stackoverflow.com/objectives/5788521/reading-a-csv-file-using-python
     - What is useful about each page?
     - Do you understand all of the code in the second page?
     - There are many options given in the first Stack Overflow page. Which one seems like a good place to start?
@@ -303,7 +303,7 @@ expects as input, and what kind of output it produces?
     Which pane in Spyder will show our new `data` object? What happens when you click on it?
 
 
-## Key Points {#py-getting-started-keypoints}
+## Key Points {#getting-started-keypoints}
 
-```{r, child="keypoints/py-getting-started.md"}
+```{r, child="keypoints/getting-started.md"}
 ```
