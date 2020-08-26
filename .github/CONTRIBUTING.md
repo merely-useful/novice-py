@@ -1,5 +1,9 @@
 # Contributing Guidelines
 
+Contributions of all kinds are welcome.
+By offering a contribution, you agree to abide by our [Code of Conduct](CODE_OF_CONDUCT.md)
+and that your work may be made available under the terms of [our license](LICENSE.md).
+
 ## Decision Making
 
 1.  Before each meeting, anyone who wishes may sponsor a proposal by filing an
@@ -31,15 +35,11 @@ meeting. Follow the "Proposal Issue Template".
 
 ## Building and Previewing
 
-**Note:** we are using `book` as the master (published) branch because of the
-way GitHub handles organization repositories, domain names, and the generation
-of the website.
-
 **Setup to locally preview the book**:
 
 1.  Install R (we recommend that you also install and use the RStudio IDE).
 
-1.  Open RStudio by clicking on the `merely-useful.github.io.Rproj` file (if not
+1.  Open RStudio by clicking on the `novice-py.Rproj` file (if not
 through RStudio, then open an R console in the location of the Merely Useful
 repo) and install the dependencies by typing in the console:
 
@@ -51,6 +51,9 @@ repo) and install the dependencies by typing in the console:
 
 **Build and preview from the command line**:
 
+This book is written in [bookdown](https://bookdown.org/yihui/bookdown).
+If you want to preview builds on your own computer, please:
+
 1.  `make html` and then open `_book/index.html`.
 1.  `make pdf` or `make epub` to build PDF and EPUB versions (also in the
 `_book` folder).
@@ -59,17 +62,20 @@ Or via RStudio:
 
 1. When in the R Project (opened via the `.Rproj` file), use the key bindings `Ctrl-Shift-B` to build the `html` output.
 
+For building the *PDF*, note that bookdown works best with [TinyTeX](https://yihui.name/tinytex/).
+After installing it, you can run `make tex-packages` to install all the packages this book depends on.
+
 ## Workflow for Adding Content
 
-- Use the `book` branch as the main "development" branch (**not `master`**).
-- Since `book` is "protected", to add to the repo you must:
-    1. Submit a PR of a branch from your fork of the repo
-    1. Each PR must pass the Travis CI check and must get at least one (1)
-    approval from someone else.
-    1. Generally @gvwilson or @lwjohnst86 merge into the main repo's
-    `book` branch to make sure the content will generate correctly to the website.
-    However, others should be able to merge as well.
-    
+The main development branch is `master` and the website is built on `gh-pages`.
+To add content, create a new branch in the repository and submit a PR.
+Please only create a PR when you are ready for your change to be reviewed and merged in.
+In general, only the `Rmd` files need to be edited.
+
+When reviewing PRs and making changes, it's probably easier to edit the branch 
+directly and push the change up. For comments, please use the commenting features
+in the PR.
+
 **For larger changes (e.g. making a chapter)**:
 
 - Pick a chapter (as assigned to or by you) and create a branch to work on for
