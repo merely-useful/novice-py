@@ -1,6 +1,6 @@
-Package: merely.useful
+Package: novice.py
 Type: Book
-Title: Merely Useful
+Title: "Merely Useful: Course for teaching Python to novices"
 Version: 1.0.0
 Imports: 
     tinytex,
